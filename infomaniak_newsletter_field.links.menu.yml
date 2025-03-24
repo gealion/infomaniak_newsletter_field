@@ -1,0 +1,6 @@
+infomaniak_newsletter_field.settings:
+  title: 'Infomaniak Newsletter Settings'
+  description: 'Configure Infomaniak Newsletter API integration.'
+  parent: system.admin_config_services
+  route_name: infomaniak_newsletter_field.settings
+  weight: 100

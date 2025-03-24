@@ -13,3 +13,10 @@ infomaniak_newsletter_field.validate_subscription:
         type: string
       mailinglist_id:
         type: string
+infomaniak_newsletter_field.settings:
+  path: '/admin/config/services/infomaniak-newsletter'
+  defaults:
+    _form: '\Drupal\infomaniak_newsletter_field\Form\InfomaniakNewsletterSettingsForm'
+    _title: 'Infomaniak Newsletter Settings'
+  requirements:
+    _permission: 'administer site configuration'

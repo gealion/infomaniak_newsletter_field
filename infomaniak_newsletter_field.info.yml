@@ -3,3 +3,4 @@ description: Provides a Field Type and Tooling to allow User to Signup to Mailin
 package: Newsletter
 type: module
 core_version_requirement: ^10 || ^11
+configure: infomaniak_newsletter_field.settings
