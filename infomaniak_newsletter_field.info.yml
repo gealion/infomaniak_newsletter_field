@@ -1,0 +1,5 @@
+name: Infomaniak Newsletter Field
+description: Provides a Field Type and Tooling to allow User to Signup to Mailing Lists.
+package: Newsletter
+type: module
+core_version_requirement: ^10 || ^11

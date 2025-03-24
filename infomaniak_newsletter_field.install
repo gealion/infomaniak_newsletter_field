@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the infomaniak_newsletter_field module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function infomaniak_newsletter_field_schema() {
+  $schema['infomaniak_newsletter_field_subscriptions'] = [
+    'description' => 'Stores newsletter subscription information.',
+    'fields' => [
+      'email' => [
+        'type' => 'varchar',
+        'length' => 254,
+        'not null' => TRUE,
+        'description' => 'Email address of the subscriber.',
+      ],
+      'mailinglist_id' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'description' => 'ID of the mailing list.',
+      ],
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Unix timestamp of when the subscription was created.',
+      ],
+      'validation_status' => [
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Validation status: FALSE = unvalidated, TRUE = validated.',
+        'mysql_type' => 'tinyint',
+        'pgsql_type' => 'boolean',
+      ],
+    ],
+    'primary key' => ['email', 'mailinglist_id'],
+    'indexes' => [
+      'mailinglist_id' => ['mailinglist_id'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Add the newsletter subscriptions table.
+ */
+function infomaniak_newsletter_field_update_9401() {
+  $schema = \Drupal::database()->schema();
+  $table_name = 'infomaniak_newsletter_field_subscriptions';
+
+  if (!$schema->tableExists($table_name)) {
+    $schema->createTable($table_name, infomaniak_newsletter_field_schema()[$table_name]);
+    return t('Created the @table_name table.', ['@table_name' => $table_name]);
+  }
+}

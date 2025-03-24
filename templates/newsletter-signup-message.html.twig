@@ -1,0 +1,8 @@
+{% set classes = [
+  status == 'success' ? 'newsletter-success',
+  status == 'error' ? 'newsletter-error',
+] %}
+
+<div class="newsletter-success">
+  {{ message }}
+</div>

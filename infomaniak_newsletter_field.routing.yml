@@ -1,0 +1,15 @@
+infomaniak_newsletter_field.validate_subscription:
+  path: '/newsletter/validate/{timestamp}/{email}/{mailinglist_id}'
+  defaults:
+    _controller: '\Drupal\infomaniak_newsletter_field\Controller\NewsletterValidationController::validateSubscription'
+    _title: 'Validate Newsletter Subscription'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      timestamp:
+        type: integer
+      email:
+        type: string
+      mailinglist_id:
+        type: string

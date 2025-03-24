@@ -1,0 +1,17 @@
+services:
+  infomaniak_newsletter_field.infomaniak_v2:
+    class: Drupal\infomaniak_newsletter_field\Services\InfomaniakV2ApiService
+    arguments:
+      - '@http_client'
+      - '@config.factory'
+      - '@logger.factory'
+  infomaniak_newsletter_field.mockup_api:
+    class: Drupal\infomaniak_newsletter_field\Services\MockupApiService
+  infomaniak_newsletter_field.validation_service:
+    class: Drupal\infomaniak_newsletter_field\Services\NewsletterValidationService
+    arguments:
+      - '@database'
+      - '@plugin.manager.mail'
+      - '@language_manager'
+      - '@config.factory'
+      - '@infomaniak_newsletter_field.infomaniak_v2'
